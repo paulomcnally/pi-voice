@@ -21,7 +21,7 @@ try:
         with m as source: audio = r.listen(source)
         print(".")
         try:
-            value = r.recognize_google(audio)
+            value = r.recognize_sphinx(audio)
             if keyword.lower() in value.lower():
                 if str is bytes:
                     reply = "{}".format(value).encode("utf-8")
