@@ -105,3 +105,6 @@ venv.bak/
 
 # IDEA
 .idea/
+
+# mac OS files
+.DS_Store
