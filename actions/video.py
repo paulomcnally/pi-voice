@@ -8,13 +8,14 @@ microphone = sr.Microphone()
 class Video:
     @staticmethod
     def listen():
-        os.system("omxplayer /home/pi/pi-voice/locales/es/i_did_not_find_the_song_you_requested.mp3")
+        os.system("omxplayer /home/pi/pi-voice/locales/es/what_video_do_you_want_to_see.mp3")
         try:
             with microphone as source:
                 recognizer.adjust_for_ambient_noise(source)
             while True:
                 with microphone as source:
                     audio = recognizer.listen(source)
+                    quit()
                 try:
                     print("Sphinx thinks you said '" + recognizer.recognize_google(audio, None, "es-LA") + "'")
                 except sr.UnknownValueError:
