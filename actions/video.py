@@ -15,9 +15,9 @@ class Video:
             while True:
                 with microphone as source:
                     audio = recognizer.listen(source)
-                    quit()
                 try:
                     print("Sphinx thinks you said '" + recognizer.recognize_google(audio, None, "es-LA") + "'")
+                    pass
                 except sr.UnknownValueError:
                     print("Sphinx could not understand audio")
                 except sr.RequestError as e:
