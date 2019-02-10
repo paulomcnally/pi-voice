@@ -8,4 +8,4 @@ class Audio:
         logging.info('Audio.play')
 
         logging.info('Audio.play - File: %s' % file)
-        os.system('/home/pi/pi-voice/locales/es/%s.mp3' % file)
+        os.system('omxplayer ./locales/es/%s.mp3' % file)
