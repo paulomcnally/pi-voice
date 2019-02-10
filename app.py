@@ -1,5 +1,6 @@
 #!/usr/env/python3
 import speech_recognition as sr
+from playsound import playsound
 import os
 
 from actions.play import Play
@@ -27,8 +28,10 @@ try:
             value = r.recognize_google(audio, None, "es-LA")
 
             if value in play:
+                playsound('./locales/es/ok.pm3')
                 Play.listen()
             if value in video:
+                playsound('./locales/es/ok.pm3')
                 Video.listen()
 
             if keyword.lower() in value.lower():
