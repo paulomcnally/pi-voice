@@ -27,10 +27,10 @@ try:
             value = recognizer.recognize_google(audio, None, "es-LA")
             print(value)
 
-            if value in play:
+            if value.lower() in play:
                 os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
                 Play.listen()
-            if value in video:
+            if value.lower() in video:
                 os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
                 Video.listen()
 
