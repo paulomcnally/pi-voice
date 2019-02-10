@@ -27,8 +27,7 @@ try:
 
             # We are looking for a valid action
             for command in commands:
-                regexp = re.compile(command['regular_expresion'])
-                match = regexp.match(value.lower())
+                match = re.match(command['regular_expresion'], value.lower())
 
                 # A valid action was found
                 if match:
