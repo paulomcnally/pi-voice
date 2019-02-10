@@ -1,6 +1,5 @@
 #!/usr/env/python3
 import speech_recognition as sr
-from playsound import playsound
 import os
 
 from actions.play import Play
@@ -23,15 +22,15 @@ try:
         with microphone as source:
             audio = recognizer.listen(source)
         print(".")
-        playsound('./locales/es/ready.pm3')
+        os.system("omxplayer ./locales/es/ready.pm3")
         try:
             value = recognizer.recognize_google(audio, None, "es-LA")
 
             if value in play:
-                playsound('./locales/es/ok.pm3')
+                os.system("omxplayer ./locales/es/ok.pm3")
                 Play.listen()
             if value in video:
-                playsound('./locales/es/ok.pm3')
+                os.system("omxplayer ./locales/es/ok.pm3")
                 Video.listen()
 
             if keyword.lower() in value.lower():

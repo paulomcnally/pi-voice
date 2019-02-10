@@ -1,5 +1,5 @@
 import speech_recognition as sr
-from playsound import playsound
+import os
 
 recognizer = sr.Recognizer()
 microphone = sr.Microphone()
@@ -8,7 +8,7 @@ microphone = sr.Microphone()
 class Video:
     @staticmethod
     def listen():
-        playsound('../locales/es/i_did_not_find_the_video_you_requested.pm3')
+        os.system("omxplayer ../locales/es/i_did_not_find_the_song_you_requested.pm3")
         try:
             with microphone as source:
                 recognizer.adjust_for_ambient_noise(source)
