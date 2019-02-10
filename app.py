@@ -19,7 +19,7 @@ try:
         recognizer.adjust_for_ambient_noise(source)
     while True:
         print("Ready")
-        os.system("omxplayer /home/pi/pi-voice/locales/es/ready.pm3")
+        os.system("omxplayer /home/pi/pi-voice/locales/es/ready.mp3")
         with microphone as source:
             audio = recognizer.listen(source)
         print(".")
@@ -27,10 +27,10 @@ try:
             value = recognizer.recognize_google(audio, None, "es-LA")
 
             if value in play:
-                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.pm3")
+                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
                 Play.listen()
             if value in video:
-                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.pm3")
+                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
                 Video.listen()
 
             if keyword.lower() in value.lower():
