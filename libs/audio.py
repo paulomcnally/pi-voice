@@ -11,4 +11,4 @@ class Audio:
         logging.info('Audio.play')
 
         logging.info('Audio.play - File: %s' % file)
-        os.system('omxplayer ./locales/es/%s.mp3 &> /dev/null' % file)
+        os.system('omxplayer ./locales/es/%s.mp3 > /dev/null' % file)
