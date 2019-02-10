@@ -24,12 +24,15 @@ class Listen:
                 try:
                     value = recognizer.recognize_google(audio, None, "es-NI")
                     print('Text: %s' % value)
+                    pass
                 except sr.UnknownValueError:
                     logging.info('Listen.start - UnknownValueError')
                     Audio.play('unknown_value_error')
+                    pass
                 except sr.RequestError:
                     logging.info('Listen.start - RequestError')
                     Audio.play('request_error')
+                    pass
 
         except KeyboardInterrupt:
             pass
