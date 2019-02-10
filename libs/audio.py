@@ -1,4 +1,4 @@
-import os
+import subprocess
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -11,4 +11,4 @@ class Audio:
         logging.info('Audio.play')
 
         logging.info('Audio.play - File: %s' % file)
-        os.system('omxplayer ./locales/es/%s.mp3 > /dev/null' % file)
+        subprocess.run('omxplayer ./locales/es/%s.mp3 > /dev/null 2>&1' % file)
