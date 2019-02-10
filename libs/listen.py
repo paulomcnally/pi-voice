@@ -2,13 +2,16 @@ import speech_recognition as sr
 import logging
 from libs.audio import Audio
 
-recognizer = sr.Recognizer()
-microphone = sr.Microphone()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class Listen:
     @staticmethod
     def start():
+        recognizer = sr.Recognizer()
+        microphone = sr.Microphone()
+
         try:
             with microphone as source:
                 logging.info('Listen.start - Adjusting microphone')

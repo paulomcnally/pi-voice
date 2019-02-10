@@ -1,7 +1,9 @@
 import datetime
 import logging
-
 from libs.audio import Audio
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class Greeting:
