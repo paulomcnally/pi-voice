@@ -11,4 +11,4 @@ class Audio:
         logging.info('Audio.play')
 
         logging.info('Audio.play - File: %s' % file)
-        subprocess.run('omxplayer ./locales/es/%s.mp3 > /dev/null 2>&1' % file)
+        subprocess.run('/usr/bin/omxplayer ./locales/es/%s.mp3 > /dev/null 2>&1' % file)
