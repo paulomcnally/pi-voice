@@ -19,7 +19,7 @@ try:
         recognizer.adjust_for_ambient_noise(source)
     while True:
         print("Ready")
-        os.system("omxplayer /home/pi/pi-voice/locales/es/ready.mp3")
+        os.system("omxplayer /home/pi/pi-voice/locales/es/goodnight.mp3")
         with microphone as source:
             audio = recognizer.listen(source)
         print(".")
