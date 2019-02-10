@@ -8,7 +8,7 @@ microphone = sr.Microphone()
 class Play:
     @staticmethod
     def listen():
-        os.system("omxplayer ../locales/es/i_did_not_find_the_song_you_requested.pm3")
+        os.system("omxplayer /home/pi/pi-voice/locales/es/i_did_not_find_the_song_you_requested.pm3")
         try:
             with microphone as source:
                 recognizer.adjust_for_ambient_noise(source)

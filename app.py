@@ -22,15 +22,15 @@ try:
         with microphone as source:
             audio = recognizer.listen(source)
         print(".")
-        os.system("omxplayer ./locales/es/ready.pm3")
+        os.system("omxplayer /home/pi/pi-voice/locales/es/ready.pm3")
         try:
             value = recognizer.recognize_google(audio, None, "es-LA")
 
             if value in play:
-                os.system("omxplayer ./locales/es/ok.pm3")
+                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.pm3")
                 Play.listen()
             if value in video:
-                os.system("omxplayer ./locales/es/ok.pm3")
+                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.pm3")
                 Video.listen()
 
             if keyword.lower() in value.lower():
