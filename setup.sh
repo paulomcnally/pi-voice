@@ -8,10 +8,8 @@ sudo apt-get --yes install swig
 sudo apt-get --yes install python-pyaudio
 sudo apt-get --yes install portaudio19-dev
 sudo apt-get --yes install flac
-sudo apt-get --yes install pocketsphinx
+sudo apt-get --yes install omxplayer
 sudo pip3 install SpeechRecognition
 sudo pip3 install google-api-python-client
 sudo pip3 install pyaudio
-sudo pip3 install pocketsphinx
-sudo pip3 install playsound
 
