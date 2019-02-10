@@ -1,7 +1,7 @@
 import os
 
 
-class Video:
+class Music:
     @staticmethod
     def run(value):
         print(value)

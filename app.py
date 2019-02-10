@@ -1,24 +1,16 @@
 #!/usr/env/python3
 import importlib
-
 import speech_recognition as sr
 import re
 import os
 
-from actions.play import Play
-from actions.video import Video
-
 recognizer = sr.Recognizer()
 microphone = sr.Microphone()
 
-play = ['reproduce música', 'reproducir música']
-video = ['reproduce video', 'reproducir video']
-keyword = 'auto'
-exitWord = ['quit', 'exit']
-
+# List of commands to execute
 commands = [
-    dict(class_name='Play', re='reproduce música de (.*)'),
-    dict(class_name='Video', re='reproduce video de (.*)')
+    dict(class_name='Music', regular_expresion='reproduce música de (.*)'),
+    dict(class_name='Video', regular_expresion='reproduce video de (.*)')
 ]
 
 try:
@@ -32,28 +24,20 @@ try:
         try:
             value = recognizer.recognize_google(audio, None, "es-LA")
 
+            # We are looking for a valid action
             for command in commands:
-                regexp = re.compile(command['re'])
+                regexp = re.compile(command['regular_expresion'])
                 match = regexp.match(value.lower())
 
+                # A valid action was found
                 if match:
                     os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
                     Action = getattr(importlib.import_module('actions.%s' % command['class_name'].lower()), command['class_name'])
-                    Action.run(match.group())
+                    Action.run(match.group(0))
                     break
-                else:
-                    print('No match')
 
-            if keyword.lower() in value.lower():
-                if str is bytes:
-                    reply = "{}".format(value).encode("utf-8")
-                else:
-                    reply = "{}".format(value)
-                if reply in exitWord:
-                    quit()
-                else:
-                    print("You said: %s" % reply)
-                    os.system("flite -t  %s " % reply)
+            # No valid action found
+            os.system("omxplayer /home/pi/pi-voice/locales/es/unsuccess.mp3")
         except sr.UnknownValueError as e:
             print(e)
             print("The Google API could not understand the audio...")
