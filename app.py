@@ -25,6 +25,7 @@ try:
         print(".")
         try:
             value = recognizer.recognize_google(audio, None, "es-LA")
+            print(value)
 
             if value in play:
                 os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
