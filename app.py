@@ -33,7 +33,7 @@ try:
                 if match:
                     os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
                     Action = getattr(importlib.import_module('actions.%s' % command['class_name'].lower()), command['class_name'])
-                    Action.run(match.group(0))
+                    Action.run(match.group(2))
                     break
 
             # No valid action found
