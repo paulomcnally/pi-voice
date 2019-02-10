@@ -1,5 +1,8 @@
 #!/usr/env/python3
+import importlib
+
 import speech_recognition as sr
+import re
 import os
 
 from actions.play import Play
@@ -13,26 +16,33 @@ video = ['reproduce video', 'reproducir video']
 keyword = 'auto'
 exitWord = ['quit', 'exit']
 
+commands = [
+    dict(class_name='Play', re='reproduce música de (.*)'),
+    dict(class_name='Video', re='reproduce video de (.*)')
+]
+
 try:
-    print("Loading...")
     with microphone as source:
         recognizer.adjust_for_ambient_noise(source)
-    while True:
-        print("Ready")
         os.system("omxplayer /home/pi/pi-voice/locales/es/goodnight.mp3")
+    while True:
         with microphone as source:
             audio = recognizer.listen(source)
-        print(".")
+            os.system("omxplayer /home/pi/pi-voice/locales/es/success.mp3")
         try:
             value = recognizer.recognize_google(audio, None, "es-LA")
-            print(value)
 
-            if value.lower() in play:
-                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
-                Play.listen()
-            if value.lower() in video:
-                os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
-                Video.listen()
+            for command in commands:
+                regexp = re.compile(command['re'])
+                match = regexp.match(value.lower())
+
+                if match:
+                    os.system("omxplayer /home/pi/pi-voice/locales/es/ok.mp3")
+                    Action = getattr(importlib.import_module('actions.%s' % command['class_name'].lower()), command['class_name'])
+                    Action.run(match.group())
+                    break
+                else:
+                    print('No match')
 
             if keyword.lower() in value.lower():
                 if str is bytes:
