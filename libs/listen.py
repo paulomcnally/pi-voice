@@ -9,14 +9,14 @@ logger = logging.getLogger(__name__)
 class Listen:
     @staticmethod
     def start():
+        listen = True
         recognizer = sr.Recognizer()
         microphone = sr.Microphone()
-
         try:
             with microphone as source:
                 logging.info('Listen.start - Adjusting microphone')
                 recognizer.adjust_for_ambient_noise(source)
-            while True:
+            while listen:
                 with microphone as source:
                     logging.info('Listen.start -Microphone listening')
                     audio = recognizer.listen(source)
@@ -24,15 +24,15 @@ class Listen:
                 try:
                     value = recognizer.recognize_google(audio, None, "es-NI")
                     print('Text: %s' % value)
-                    pass
+                    listen = False
                 except sr.UnknownValueError:
                     logging.info('Listen.start - UnknownValueError')
                     Audio.play('unknown_value_error')
-                    pass
+                    listen = False
                 except sr.RequestError:
                     logging.info('Listen.start - RequestError')
                     Audio.play('request_error')
-                    pass
+                    listen = False
 
         except KeyboardInterrupt:
             pass
