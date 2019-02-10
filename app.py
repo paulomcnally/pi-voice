@@ -2,13 +2,16 @@
 import speech_recognition as sr
 import os
 
-
-keyword = 'auto'
-
+from actions.play import Play
+from actions.video import Video
 
 r = sr.Recognizer()
 m = sr.Microphone()
 
+
+play = ['reproduce música', 'reproducir música']
+video = ['reproduce video', 'reproducir video']
+keyword = 'auto'
 exitWord = ['quit', 'exit']
 
 try:
@@ -21,7 +24,13 @@ try:
         with m as source: audio = r.listen(source)
         print(".")
         try:
-            value = r.recognize_sphinx(audio)
+            value = r.recognize_google(audio, None, "es-LA")
+
+            if value in play:
+                Play.listen()
+            if value in video:
+                Video.listen()
+
             if keyword.lower() in value.lower():
                 if str is bytes:
                     reply = "{}".format(value).encode("utf-8")
