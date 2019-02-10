@@ -19,10 +19,10 @@ try:
         recognizer.adjust_for_ambient_noise(source)
     while True:
         print("Ready")
+        os.system("omxplayer /home/pi/pi-voice/locales/es/ready.pm3")
         with microphone as source:
             audio = recognizer.listen(source)
         print(".")
-        os.system("omxplayer /home/pi/pi-voice/locales/es/ready.pm3")
         try:
             value = recognizer.recognize_google(audio, None, "es-LA")
 
