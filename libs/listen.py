@@ -41,7 +41,7 @@ class Listen:
                             logging.info('Listen.start - %s' % command['class_name'])
                             library = importlib.import_module('actions.%s' % command['class_name'].lower())
                             Action = getattr(library, command['class_name'])
-                            Action.run(match.group())
+                            Action.run()
                             Audio.play('ok')
                             break
                     logging.info('Listen.start - No match')
