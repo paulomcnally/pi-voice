@@ -24,6 +24,7 @@ class Listen:
                     Audio.play('success')
                 try:
                     value = recognizer.recognize_google(audio, None, "es-NI")
+                    Audio.play('ok')
                     print('Text: %s' % value)
                     listen = False
                 except sr.UnknownValueError:
