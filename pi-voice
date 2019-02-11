@@ -1,0 +1,32 @@
+#!/bin/sh
+# Start/stop the pi-voice daemon.
+#
+### BEGIN INIT INFO
+# Provides:          pi-switch-alexa
+# Required-Start:    $remote_fs $syslog $time
+# Required-Stop:     $remote_fs $syslog $time
+# Should-Start:      $network $named slapd autofs ypbind nscd nslcd winbind
+# Should-Stop:       $network $named slapd autofs ypbind nscd nslcd winbind
+# Default-Start:     S 2 3 4 5
+# Default-Stop:
+# Short-Description: pi-voice
+# Description:       Start pi-voice service
+### END INIT INFO
+
+case "$1" in
+  start)
+    _IP=$(hostname -I) || true
+    if [ "$_IP" ]; then
+      python /home/pi/pi-voice/app.py
+    fi
+    ;;
+  stop)
+
+    ;;
+  *)
+    echo "Usage: /etc/init.d/pi-voice {start|stop}"
+    exit 1
+    ;;
+esac
+
+ exit 0
