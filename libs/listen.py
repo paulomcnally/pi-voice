@@ -36,7 +36,7 @@ class Listen:
                     logging.info('Listen.start - Text: %s' % text)
 
                     for command in commands:
-                        match = re.match(command['regular_expresion'], text)
+                        match = re.match(command['regular_expresion'], text.lower())
                         if match:
                             logging.info('Listen.start - %s' % command['class_name'])
                             library = importlib.import_module('actions.%s' % command['class_name'].lower())
