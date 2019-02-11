@@ -19,6 +19,7 @@ class Listen:
             while listen:
                 with microphone as source:
                     logging.info('Listen.start -Microphone listening')
+                    Audio.play('i_hear_you')
                     audio = recognizer.listen(source)
                     Audio.play('success')
                 try:
