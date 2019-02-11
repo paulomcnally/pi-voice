@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# get rid of the cursor
-setterm -cursor off
 
 # set here the path to the directory containing your videos
 LOCATION="/home/pi/ftp/music/"
