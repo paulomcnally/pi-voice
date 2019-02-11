@@ -11,4 +11,4 @@ class Audio:
         logging.info('Audio.play')
 
         logging.info('Audio.play - File: %s' % file)
-        subprocess.run(['omxplayer', '/home/pi/pi-voice/locales/es/%s.mp3' % file])
+        subprocess.run(['omxplayer', '/home/pi/pi-voice/locales/es/%s.mp3' % file, '>', '/dev/null', '2>&1'])
