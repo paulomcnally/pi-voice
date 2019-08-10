@@ -1,5 +1,6 @@
 import datetime
 import logging
+import os
 import pyttsx3
 import i18n
 
@@ -7,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 engine = pyttsx3.init()
-i18n.load_path.append('../translations')
+i18n.load_path.append(os.path.join(os.path.dirname(__file__), '../translations'))
 
 
 class Greeting:
