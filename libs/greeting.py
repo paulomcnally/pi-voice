@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 engine = pyttsx3.init()
-i18n.add_translation('greeting')
+i18n.load_path.append('../translations')
 
 
 class Greeting:
