@@ -17,7 +17,7 @@ case "$1" in
   start)
     _IP=$(hostname -I) || true
     if [ "$_IP" ]; then
-      python "/home/$USER/pi-voice/app.py"
+      python3 "/home/$USER/pi-voice/app.py"
     fi
     ;;
   stop)
