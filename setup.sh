@@ -9,6 +9,8 @@ sudo apt-get --yes install python-pyaudio
 sudo apt-get --yes install portaudio19-dev
 sudo apt-get --yes install flac
 sudo apt-get --yes install omxplayer
+sudo apt-get --yes install espeak
+
 sudo pip3 install SpeechRecognition
 sudo pip3 install google-api-python-client
 sudo pip3 install pyaudio
