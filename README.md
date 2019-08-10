@@ -17,3 +17,21 @@ $ sudo chmod 755 /etc/init.d/pi-voice
 $ sudo update-rc.d pi-voice defaults
 
 ```
+
+## Install pip3
+
+```bash
+sudo apt-get install python3-pip
+```
+
+## Install packages
+
+```bash
+pip3 install -r requirements.txt
+```
+
+## Install player
+
+```bash
+sudo apt-get install omxplayer
+```
