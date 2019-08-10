@@ -1,15 +1,9 @@
 import datetime
 import logging
-import os
-import pyttsx3
-import i18n
+from libs.audio import Audio
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-engine = pyttsx3.init()
-i18n.load_path.append(os.path.join(os.path.dirname(__file__), '../translations'))
-i18n.set('locale', 'es')
 
 
 class Greeting:
@@ -21,10 +15,10 @@ class Greeting:
         logging.info('Greeting.run - Hour: %d' % hour)
 
         if hour < 12:
-            engine.say(i18n.t('greeting.good_morning'))
+            file = 'good_morning'
         elif 12 <= hour < 18:
-            engine.say(i18n.t('greeting.good_afternoon'))
+            file = 'good_afternoon'
         else:
-            engine.say(i18n.t('greeting.goodnight'))
+            file = 'goodnight'
 
-        engine.runAndWait()
+        Audio.play(file)
