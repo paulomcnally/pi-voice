@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 engine = pyttsx3.init()
 i18n.load_path.append(os.path.join(os.path.dirname(__file__), '../translations'))
+i18n.set('locale', 'es')
 
 
 class Greeting:
