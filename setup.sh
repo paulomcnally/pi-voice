@@ -12,4 +12,4 @@ sudo apt-get --yes install omxplayer
 sudo pip3 install SpeechRecognition
 sudo pip3 install google-api-python-client
 sudo pip3 install pyaudio
-
+sudo pip3 install pyttsx3
