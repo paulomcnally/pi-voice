@@ -13,3 +13,4 @@ sudo pip3 install SpeechRecognition
 sudo pip3 install google-api-python-client
 sudo pip3 install pyaudio
 sudo pip3 install pyttsx3
+sudo pip3 install python-i18n
